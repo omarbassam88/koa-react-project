@@ -14,5 +14,19 @@ services:
       POSTGRES_USER: user
       POSTGRES_DB: mydb
 
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: my-pgadmin
+    depends_on:
+      - db
+    environment:
+      PGADMIN_DEFAULT_EMAIL: omar@test.com
+      PGADMIN_DEFAULT_PASSWORD: postgres
+    ports:
+      - "5050:80"
+    volumes:
+      - pgadmin-data:/var/lib/pgadmin
+
 volumes:
   pgdata:
+  pgadmin-data:
