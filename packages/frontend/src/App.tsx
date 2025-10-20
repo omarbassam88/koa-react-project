@@ -6,15 +6,11 @@ import './App.css'
 function App() {
   const [count, setCount] = useState(0)
 
-  const myfetch = async () => {
-    await fetch("/@api")
+  useEffect(() => {
+    fetch("/@api")
       .then(res => res.text())
       .then(console.log)
       .catch(console.log)
-  }
-
-  useEffect(() => {
-    myfetch()
   }, [])
 
   return (
